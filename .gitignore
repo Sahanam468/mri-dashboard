@@ -1,0 +1,22 @@
+# Ignore virtual environment
+venv/
+.env
+
+# Ignore model files (too large for GitHub)
+models/*.h5
+
+# Ignore output files
+downloads/
+*.pdf
+*mask.png
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore Streamlit cache
+.streamlit/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
