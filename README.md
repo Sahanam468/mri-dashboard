@@ -22,3 +22,5 @@ streamlit run app.py
 
 ### Warning
 This is a **research/academic tool**, not a clinical diagnosis system.
+
+<img width="1710" height="1112" alt="image" src="https://github.com/user-attachments/assets/ce5b2afe-2e46-4316-b0a8-e73549065016" />
