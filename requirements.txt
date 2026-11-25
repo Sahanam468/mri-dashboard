@@ -1,10 +1,6 @@
 streamlit
-tensorflow
-Pillow
-reportlab
-qrcode[pil]
-google-generativeai
-python-dotenv
-matplotlib
-numpy
+tensorflow-cpu
 opencv-python-headless
+numpy
+pillow
+matplotlib

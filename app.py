@@ -43,10 +43,10 @@ if GEMINI_API_KEY:
 # =============================================================
 # PATH CONFIG  (YOUR WINDOWS PATHS)
 # =============================================================
-DETECTION_MODEL_PATH = r"C:\Users\RAKSHITHA SRINIVASA\Desktop\mri-dashboard\models\best_inceptionv3_tumor.h5"
-SEGMENTATION_MODEL_PATH = r"C:\Users\RAKSHITHA SRINIVASA\Desktop\mri-dashboard\models\tumor_segmentation_unet.h5"
-LOGO_PATH = r"C:\Users\RAKSHITHA SRINIVASA\Desktop\mri-dashboard\logo.png"
-PDF_OUTPUT_DIR = r"C:\Users\RAKSHITHA SRINIVASA\Desktop\mri-dashboard\downloads"
+DETECTION_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models", "best_inceptionv3_tumor.h5")
+SEGMENTATION_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models", "tumor_segmentation_unet.h5")
+LOGO_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.png")
+PDF_OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "downloads")
 
 os.makedirs(PDF_OUTPUT_DIR, exist_ok=True)
 
