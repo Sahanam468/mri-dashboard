@@ -43,8 +43,10 @@ if GEMINI_API_KEY:
 # =============================================================
 # PATH CONFIG  (YOUR WINDOWS PATHS)
 # =============================================================
-DETECTION_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models", "best_inceptionv3_tumor.h5")
-SEGMENTATION_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models", "tumor_segmentation_unet.h5")
+from huggingface_hub import hf_hub_download
+REPO_ID = "sahanam468/mri-dashboard-models"
+DETECTION_MODEL_PATH = hf_hub_download(REPO_ID, "best_inceptionv3_tumor.h5")
+SEGMENTATION_MODEL_PATH = hf_hub_download(REPO_ID, "tumor_segmentation_unet.h5")
 LOGO_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.png")
 PDF_OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "downloads")
 
