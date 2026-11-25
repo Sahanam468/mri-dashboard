@@ -29,5 +29,7 @@ This is a **research/academic tool**, not a clinical diagnosis system.
 <img width="1710" height="1112" alt="image" src="https://github.com/user-attachments/assets/d3a9a798-6dda-4def-9be6-21b1054df9c7" />
 <img width="1710" height="1112" alt="image" src="https://github.com/user-attachments/assets/b6ca67f6-2451-4e23-8d0e-e01a597c64d6" />
 <img width="1710" height="1112" alt="image" src="https://github.com/user-attachments/assets/4ebcd426-06b6-459a-8d9f-e444fb8df8f4" />
+<img width="1710" height="1112" alt="image" src="https://github.com/user-attachments/assets/0bec4711-8634-43ed-8a7f-e114ddef93ec" />
+
 
 
