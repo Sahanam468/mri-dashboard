@@ -32,12 +32,17 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
 
 HAVE_GENAI = False
 if GEMINI_API_KEY:
+    # try:
+    #     import google.generativeai as genai
+    #     genai.configure(api_key=GEMINI_API_KEY)
+    #     HAVE_GENAI = True
+    # except:
+    #     HAVE_GENAI = False
     try:
-        import google.generativeai as genai
-        genai.configure(api_key=GEMINI_API_KEY)
+        from google import genai
         HAVE_GENAI = True
-    except:
-        HAVE_GENAI = False
+    except Exception:
+    HAVE_GENAI = False
 
 
 # =============================================================
@@ -56,27 +61,45 @@ os.makedirs(PDF_OUTPUT_DIR, exist_ok=True)
 # =============================================================
 # GEMINI FUNCTION (SAFE FALLBACK)
 # =============================================================
+# def gemini_generate(prompt: str):
+#     """Generate text using Gemini with correct SDK. Safe fallback if it fails."""
+#     if not HAVE_GENAI:
+#         return (
+#             "Findings: LLM failed.\n\n"
+#             "Impression: Manual review required.\n\n"
+#             "Recommendations: Review clinically."
+#         )
+
+#     try:
+#         model = genai.GenerativeModel("gemini-2.5-flash")
+#         response = model.generate_content(prompt)
+#         return response.text
+#     except Exception as e:
+#         print("Gemini error:", e)
+#         return (
+#             "Findings: LLM failed.\n\n"
+#             "Impression: Manual review required.\n\n"
+#             "Recommendations: Review clinically."
+#         )
 def gemini_generate(prompt: str):
-    """Generate text using Gemini with correct SDK. Safe fallback if it fails."""
+    """Generate text using Gemini (new SDK). Shows the real error if it fails."""
     if not HAVE_GENAI:
-        return (
-            "Findings: LLM failed.\n\n"
-            "Impression: Manual review required.\n\n"
-            "Recommendations: Review clinically."
-        )
+        return "Findings: LLM failed (google-genai package not imported).\n\nImpression: Manual review required.\n\nRecommendations: Review clinically."
 
     try:
-        model = genai.GenerativeModel("gemini-2.5-flash")
-        response = model.generate_content(prompt)
+        client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt,
+        )
         return response.text
     except Exception as e:
-        print("Gemini error:", e)
+        print("Gemini error:", repr(e))
         return (
-            "Findings: LLM failed.\n\n"
+            f"Findings: LLM failed ({type(e).__name__}: {e}).\n\n"
             "Impression: Manual review required.\n\n"
             "Recommendations: Review clinically."
         )
-
 
 
 # =============================================================
