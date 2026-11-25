@@ -5,3 +5,4 @@ opencv-python-headless
 pillow
 matplotlib
 huggingface_hub
+google-genai
